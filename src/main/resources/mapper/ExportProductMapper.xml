@@ -26,17 +26,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查询某个报运下的货物信息 -->
 	<select id="getAll" parameterType="map" resultMap="exportProductRM">
- 		select * from EXPORT_PRODUCT_C
+ 		select * from export_product_c
 		where 1=1
 		and EXPORT_ID=#{exportId}
 	</select>
 	
 	<select id="get" parameterType="string" resultMap="exportProductRM">
-		select * from EXPORT_PRODUCT_C where EXPORT_PRODUCT_ID=#{id}
+		select * from export_product_c where EXPORT_PRODUCT_ID=#{id}
 	</select>
 	
 	<insert id="insert" parameterType="com.athome.ebusiness.domain.ExportProduct">
-		insert into EXPORT_PRODUCT_C
+		insert into export_product_c
 		(EXPORT_PRODUCT_ID,EXPORT_ID,FACTORY_ID,FACTORY_NAME,PRODUCT_NO,PACKING_UNIT,CNUMBER,PRICE,BOX_NUM,GROSS_WEIGHT,NET_WEIGHT,SIZE_LENGTH,SIZE_WIDTH,SIZE_HEIGHT,EX_PRICE,TAX,ORDER_NO)
 		values
 		(#{id},#{exportId},#{factoryId,jdbcType=VARCHAR},#{factoryName,jdbcType=VARCHAR},
@@ -49,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="update" parameterType="com.athome.ebusiness.domain.ExportProduct">
-		update EXPORT_PRODUCT_C
+		update export_product_c
 		<set>
 			<if test="exportId !=null"> EXPORT_ID=#{exportId}, </if>
 			<if test="factoryId !=null"> FACTORY_ID=#{factoryId}, </if>
@@ -72,13 +72,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<delete id="deleteById" parameterType="string">
-		delete from EXPORT_PRODUCT_C
+		delete from export_product_c
 		where EXPORT_PRODUCT_ID=#{id}
 	</delete>	
 	
 	<!-- 删除某个报运下的所有货物 -->
 	<delete id="deleteByExportId" parameterType="string">
-		delete from EXPORT_PRODUCT_C
+		delete from export_product_c
 		where EXPORT_ID=#{id}
 	</delete>
 </mapper>

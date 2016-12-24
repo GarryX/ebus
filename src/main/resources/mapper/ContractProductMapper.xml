@@ -62,7 +62,7 @@
 		ACCESSORIES, ORDER_NO,
 		EXTS
 
-		from CONTRACT_PRODUCT_C
+		from contract_product_c
 		<if test="contractId != null">where CONTRACT_ID = #{contractId}</if>
 	</select>
 	<select id="get" parameterType="string" resultMap="contractProductRM">
@@ -82,13 +82,13 @@
 		ACCESSORIES, ORDER_NO,
 		EXTS
 
-		from CONTRACT_PRODUCT_C
+		from contract_product_c
 		where
 		CONTRACT_PRODUCT_ID = #{pid,jdbcType=VARCHAR}
 	</select>
 
 	<insert id="insert" parameterType="com.athome.ebusiness.domain.ContractProduct">
-		insert into CONTRACT_PRODUCT_C
+		insert into contract_product_c
 		(CONTRACT_PRODUCT_ID, CONTRACT_ID,
 		FACTORY_ID,
 		FACTORY_NAME, PRODUCT_NO,
@@ -114,7 +114,7 @@
 	</insert>
 
 	<update id="update" parameterType="com.athome.ebusiness.domain.ContractProduct">
-		update CONTRACT_PRODUCT_C
+		update contract_product_c
 		<set>
 			<if test="contractId != null">
 				CONTRACT_ID = #{contractId,jdbcType=VARCHAR},
@@ -170,12 +170,12 @@
 
 	<delete id="deleteById" parameterType="string">
 		delete from
-		CONTRACT_PRODUCT_C
+		contract_product_c
 		where CONTRACT_PRODUCT_ID = #{pid,jdbcType=VARCHAR}
 	</delete>
 
 	<delete id="delete" parameterType="string">
-		delete from CONTRACT_PRODUCT_C
+		delete from contract_product_c
 		where CONTRACT_PRODUCT_ID in
 		<foreach collection="array" item="id" open="(" close=")"
 			separator=",">

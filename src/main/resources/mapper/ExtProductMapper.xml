@@ -24,19 +24,19 @@
 	<!-- 某一个货物下的附件 -->
 	<select id="getAll" parameterType="map" resultMap="extCproductRM">
 		select * from
-		EXT_CPRODUCT_C
+		ext_cproduct_c
 		where CONTRACT_PRODUCT_ID=#{contractProductId}
 	</select>
 
 	<!-- 某个附件 -->
 	<select id="get" parameterType="string" resultMap="extCproductRM">
 		select * from
-		EXT_CPRODUCT_C
+		ext_cproduct_c
 		where EXT_CPRODUCT_ID=#{pid}
 	</select>
 
 	<insert id="insert" parameterType="com.athome.ebusiness.domain.ExtProduct">
-		insert into EXT_CPRODUCT_C
+		insert into ext_cproduct_c
 		(EXT_CPRODUCT_ID, CONTRACT_PRODUCT_ID,
 		FACTORY_ID, FACTORY_NAME, CTYPE,
 		PRODUCT_NO, PRODUCT_IMAGE, PRODUCT_DESC,
@@ -59,7 +59,7 @@
 	</insert>
 
 	<update id="update" parameterType="com.athome.ebusiness.domain.ExtProduct">
-		update EXT_CPRODUCT_C
+		update ext_cproduct_c
 		<set>
 			<if test="contractProductId != null">
 				CONTRACT_PRODUCT_ID =
@@ -106,7 +106,7 @@
 	</update>
 
 	<delete id="deleteById" parameterType="string">
-		delete from EXT_CPRODUCT_C
+		delete from ext_cproduct_c
 		where EXT_CPRODUCT_ID=#{pid}
 	</delete>
 	<!-- 删除某个合同下的附件 -->

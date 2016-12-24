@@ -22,24 +22,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>	
 	
 	<select id="getAll" parameterType="map" resultMap="extEproductRM">
-		select * from EXT_EPRODUCT_C
+		select * from ext_eproduct_c
 		where 1=1
 		and EXPORT_PRODUCT_ID=#{exportProductId}
 	</select>
 	
 	<select id="get" parameterType="string" resultMap="extEproductRM">
-		select * from EXT_EPRODUCT_C where EXT_EPRODUCT_ID=#{id}
+		select * from ext_eproduct_c where EXT_EPRODUCT_ID=#{id}
 	</select>
 	
 	<insert id="insert" parameterType="com.athome.ebusiness.domain.ExtEproduct">
-		insert into EXT_EPRODUCT_C
+		insert into ext_eproduct_c
 		(EXT_EPRODUCT_ID,EXPORT_PRODUCT_ID,FACTORY_ID,FACTORY_NAME,CTYPE,PRODUCT_NO,PRODUCT_DESC,PACKING_UNIT,CNUMBER,PRICE,AMOUNT,PRODUCT_REQUEST,ORDER_NO)
 		values
 		(#{id,jdbcType=VARCHAR},#{exportProductId,jdbcType=VARCHAR},#{factoryId,jdbcType=VARCHAR},#{factoryName,jdbcType=VARCHAR},#{ctype,jdbcType=NUMERIC},#{productNo,jdbcType=VARCHAR},#{productDesc,jdbcType=VARCHAR},#{packingUnit,jdbcType=VARCHAR},#{cnumber,jdbcType=NUMERIC},#{price,jdbcType=NUMERIC},#{amount,jdbcType=NUMERIC},#{productRequest,jdbcType=VARCHAR},#{orderNo,jdbcType=NUMERIC})
 	</insert>
 	
 	<update id="update" parameterType="com.athome.ebusiness.domain.ExtEproduct">
-		update EXT_EPRODUCT_C
+		update ext_eproduct_c
 		<set>
 			<if test="exportProductId"> EXPORT_PRODUCT_ID=#{exportProductId}, </if>
 			<if test="factoryId !=null"> FACTORY_ID=#{factoryId}, </if>
@@ -58,13 +58,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<delete id="delete" parameterType="string">
-		delete from EXT_EPRODUCT_C
+		delete from ext_eproduct_c
 		where EXT_EPRODUCT_ID=#{id}
 	</delete>	
 	
 	<!-- 删除某个报运下的所有附件 -->
 	<delete id="deleteByExportId" parameterType="string">
-		delete from EXT_EPRODUCT_C
+		delete from ext_eproduct_c
 		where EXPORT_PRODUCT_ID in 
 		(select EXPORT_PRODUCT_ID from EXPORT_PRODUCT_C where EXPORT_ID=#{exportId})
 	</delete>

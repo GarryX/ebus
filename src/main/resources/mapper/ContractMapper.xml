@@ -103,7 +103,7 @@
 	<!-- 查询 -->
 	<select id="getAll" parameterType="map" resultMap="contractRM">
 		select * from
-		CONTRACT_C
+		contract_c
 		where 1=1
 		<if test="state != null">and STATE = #{state}</if>
 	</select>
@@ -193,13 +193,13 @@
 	<!-- 查询一条 -->
 	<select id="get" parameterType="string" resultMap="contractRM">
 		select * from
-		CONTRACT_C
+		contract_c
 		where CONTRACT_ID=#{pid}
 	</select>
 
 	<!-- 新增 -->
 	<insert id="insert" parameterType="com.athome.ebusiness.domain.Contract">
-		insert into CONTRACT_C
+		insert into contract_c
 		(CONTRACT_ID,OFFEROR,CONTRACT_NO,SIGNING_DATE,INPUT_BY,CHECK_BY,INSPECTOR,TOTAL_AMOUNT,IMPORT_NUM,CREQUEST,CUSTOM_NAME,DELIVERY_PERIOD,SHIP_TIME,TRADE_TERMS,REMARK,PRINT_STYLE,OLD_STATE,STATE,OUT_STATE)
 		values(
 		#{id},
@@ -226,7 +226,7 @@
 
 	<!-- 修改 -->
 	<update id="update" parameterType="com.athome.ebusiness.domain.Contract">
-		update CONTRACT_C
+		update contract_c
 		<set>
 			<if test="offeror != null">OFFEROR=#{offeror},</if>
 			<if test="contractNo != null">CONTRACT_NO=#{contractNo},</if>
@@ -252,13 +252,13 @@
 
 	<!-- 删除一条 -->
 	<delete id="deleteById" parameterType="string">
-		delete from CONTRACT_C
+		delete from contract_c
 		where CONTRACT_ID=#{pid}
 	</delete>
 
 	<!-- 删除多条 -->
 	<delete id="delete" parameterType="string">
-		delete from CONTRACT_C
+		delete from contract_c
 		where CONTRACT_ID in
 		<foreach collection="array" item="id" open="(" close=")"
 			separator=",">
@@ -267,7 +267,7 @@
 	</delete>
 	<!-- 修改状态 -->
 	<update id="updateState" parameterType="map">
-		update CONTRACT_C
+		update contract_c
 		set STATE=#{state}
 		where CONTRACT_ID in
 		<foreach collection="ids" item="id" open="(" close=")"
